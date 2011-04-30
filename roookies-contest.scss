@@ -1,0 +1,190 @@
+$base-color: #3D3D3D;
+$highlight-color: #DB0A0A;
+
+$toolbar-gradient: 'glossy';
+$base-gradient: 'glossy';
+
+$include-default-icons: false;
+
+@import 'sencha-touch/default/all';
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-layout;
+@include sencha-loading-spinner;
+
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+.x-toolbar-title {
+    display: none;
+}
+
+.x-toolbar {
+    -webkit-box-shadow: 0px 0px 10px rgba(#000, 0.8);
+
+    .x-layout-box {
+        background: url(logo-1.png) no-repeat center center;
+        background-size: 135px 24px;
+    }
+}
+
+.x-list, .x-panel.x-fit-item {
+    @include background-gradient($base-color, 'recessed');
+}
+
+.x-list {
+    -webkit-box-shadow: inset 0px 0px 20px rgba(#000, 0.8);
+    &.x-fit-item {
+        -webkit-box-shadow: none;
+    }
+}
+
+
+.shot {
+    padding-top: 10px;
+    -webkit-transition-duration: 260ms;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in-out;
+
+    img.shot-image {
+        display:block;
+        margin: 0px auto;
+        clear:both;
+        width:304px;
+        padding: 5px;
+        @include background-gradient(darken($base-color, 10%), $base-gradient);
+        -webkit-box-shadow: 0px 0px 10px rgba(#000, 0.8);
+    }
+
+    .title {
+        margin: 0px auto 8px;
+        width: 304px;
+        text-shadow: 0px -1px 0px #000;
+        color: #fff;
+        h2 {
+            font-size:1.3em;
+            overflow : hidden;
+            text-overflow: ellipsis;
+        }
+        .player {
+            font-family: 'Expletus Sans', arial, serif;
+            color:lighten($highlight-color, 5%);
+            text-shadow: 0 -1px 0 rgba(#000, .5);
+        }
+    }
+}
+
+.shot.x-item-selected {
+    margin-bottom: -2em;
+}
+
+.comment {
+    color: #fff;
+    padding: 8px;
+    text-shadow: 0 1px 0 rgba(#000, .5);
+    min-height: 96px;
+    border: {
+        bottom: 1px solid darken($base-color, 10%);
+        top: 1px solid lighten($base-color, 5%);
+    }
+
+    &:first-of-type {
+        border-top: none;
+    }
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+
+    .player {
+        font-family: 'Expletus Sans', arial, serif;
+        color: lighten($highlight-color, 5%);
+        text-shadow: 0 -1px 0 rgba(#000, .5);
+    }
+    .avatar {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}
+
+.x-list .shot-meta::after {
+    margin-left: -147px;
+    width: 294px;
+    background: #000;
+    opacity: 0.6;
+}
+
+.shot-meta {
+    text-align:center;
+    background: none;
+    border: none;
+    z-index: 50;
+    bottom: 0.3em;
+    line-height: 2em;
+    position: relative;
+
+    &:after {
+        margin-left: -152px;
+        width: 304px;
+        height: 40px;
+        display: block;
+        line-height: 2em;
+        content: '';
+        background: #171717;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        z-index: -10;
+    }
+
+    span {
+        margin:0 .5em;
+        color:#fff;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
+        font-family: 'Expletus Sans', arial, serif;
+
+        img {
+            -webkit-mask-size: 1.5em;
+            width: 1.5em;
+            height: 1.5em;
+            margin-right: .4em;
+            vertical-align: text-bottom;
+        }
+
+        &.views img {
+            -webkit-mask-image: theme_image($theme-name, "pictos/look.png");
+            @include background-gradient($highlight-color, $base-gradient);
+        }
+
+        &.likes img {
+            -webkit-mask-image: theme_image($theme-name, "pictos/heart.png");
+            @include background-gradient($highlight-color, $base-gradient);
+        }
+
+        &.rebounds img {
+            -webkit-mask-image: theme_image($theme-name, "pictos/share.png");
+            @include background-gradient($highlight-color, $base-gradient);
+        }
+
+        &.comments img {
+            -webkit-mask-image: theme_image($theme-name, "pictos/chat.png");
+            @include background-gradient($highlight-color, $base-gradient);
+        }
+
+    }
+
+    .noun {
+        display:none;
+    }
+}
+
+.avatar {
+    clear:both;
+    float:left;
+    margin:0 8px 8px 0;
+    border: 1px solid rgba(#000, 0.8);
+}
